@@ -42,24 +42,26 @@ async def countdown(interaction: discord.Interaction, date: str, time: str):
             days, seconds = divmod(remaining_time.total_seconds(), 86400)
             hours, seconds = divmod(seconds, 3600)
             minutes, seconds = divmod(seconds, 60)
-
-            # Mise à jour de l'embed
+            if minutes > 30:
+                hour += 1
+            if minutes < 30:
+                hour -= 1
             if len(embed.fields) > 0:
                 embed.set_field_at(
                     0,
                     name="Temps restant",
-                    value=f"{int(days)}j {int(hours)}h {int(minutes)}m",
+                    value=f"{int(days)}j {int(hours)}h",
                     inline=False
                 )
             else:
                 embed.add_field(
                     name="Temps restant",
-                    value=f"{int(days)}j {int(hours)}h {int(minutes)}m",
+                    value=f"{int(days)}j {int(hours)}h",
                     inline=False
                 )
 
             await message.edit(embed=embed)
-            await asyncio.sleep(60)  # Attente de 60 secondes
+            await asyncio.sleep(3600)  # wait for 1 hour
 
     except ValueError:
         await interaction.response.send_message(

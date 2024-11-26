@@ -43,9 +43,9 @@ async def countdown(interaction: discord.Interaction, date: str, time: str):
             hours, seconds = divmod(seconds, 3600)
             minutes, seconds = divmod(seconds, 60)
             if minutes > 30:
-                hour += 1
+                hours += 1
             if minutes < 30:
-                hour -= 1
+                hours -= 1
             if len(embed.fields) > 0:
                 embed.set_field_at(
                     0,

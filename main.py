@@ -25,7 +25,7 @@ async def cquand(interaction: discord.Interaction):
     )
     embed.add_field(
         name="Time Last",
-        value=f"{int(days)} jours, {int(hours)} heures, {int(minutes)} minutes.",
+        value=f"{int(days)} day, {int(hours)} hours, {int(minutes)} minutes.",
         inline=False
     )
     embed.set_image(url="https://i.ibb.co/kmsBmcC/squidgame.gif")
